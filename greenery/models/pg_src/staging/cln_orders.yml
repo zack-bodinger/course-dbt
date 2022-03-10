@@ -1,0 +1,47 @@
+version: 2
+
+models:
+  - name: cln_orders
+    description: orders information
+    columns:
+      - name: order_id
+        description: UUID for each unique order on platform
+        tests:
+          - not_null
+          - unique
+      - name: user_id
+        description: UserId of the user that placed this order
+        tests:
+      - name: promo_id
+        description: PromoId if any was used in the order
+        tests:
+      - name: address_id
+        description: Delivery address for this order
+        tests:
+      - name: created_at
+        description: Timestamp when the order was created
+        tests:
+      - name: order_cost
+        description: Dollar about of the items in the order
+        tests:
+      - name: shipping_cost
+        description: Cost of shipping for the order
+        tests:
+      - name: order_total
+        description: Total cost of the order including shipping
+        tests:
+      - name: tracking_id
+        description: Tracking number for the order/package
+        tests:
+      - name: shipping_service
+        description: Company that was used for shipping
+        tests:
+      - name: estimated_delivery_at
+        description: Estimated date of delivery
+        tests:
+      - name: delivered_at
+        description: Actual timestamp of delivery
+        tests:
+      - name: status
+        description: Status of the order
+        tests:

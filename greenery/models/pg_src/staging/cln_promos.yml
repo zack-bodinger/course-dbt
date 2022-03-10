@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: cln_promos
+    description: promos information
+    columns:
+      - name: promo_id
+        description: Each unique promocode on platform
+        tests:
+          - not_null
+          - unique
+      - name: discount
+        description: Absolute dollar amount that is given off with the code
+        tests:
+      - name: status
+        description: Is the promo code active or disabled
+        tests:

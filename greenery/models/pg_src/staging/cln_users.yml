@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: cln_users
+    description: users information
+    columns:
+      - name: user_id
+        description: UUID for each unique user on platform
+        tests:
+          - not_null
+          - unique
+      - name: first_name
+        description: first name of the user
+        tests:
+      - name: last_name
+        description: last name of the user
+        tests:
+      - name: email
+        description: email address of the user
+        tests:
+      - name: phone_number
+        description: phone number of the user
+        tests:
+      - name: created_at
+        description: timestamp the user was created
+        tests:
+      - name: updated_at
+        description: timestamp the user was last updated
+        tests:
+      - name: address_id
+        description: default delivery address for the user
+        tests:

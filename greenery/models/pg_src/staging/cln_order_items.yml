@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: cln_order_items
+    description: order_items information
+    columns:
+      - name: order_id
+        description: OrderId of this order
+        tests:
+          - not_null
+      - name: product_id
+        description: ProductId of a single item in this order
+        tests:
+      - name: quantity
+        description: Number of units of the product in this order
+        tests:

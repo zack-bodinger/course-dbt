@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: cln_addresses
+    description: addresses information
+    columns:
+      - name: address_id
+        description: UUID for each unique address on platform
+        tests:
+          - not_null
+          - unique
+      - name: address
+        description: The first few lines of the address
+        tests:
+      - name: zipcode
+        description: The zipcode of the address
+        tests:
+      - name: state
+        description: state this delivery address is based in
+        tests:
+      - name: country
+        description: country this delivery address is based in
+        tests:

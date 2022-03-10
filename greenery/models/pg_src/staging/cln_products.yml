@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: cln_products
+    description: products information
+    columns:
+      - name: product_id
+        description: UUID for each unique product on platform
+        tests:
+          - not_null
+          - unique
+      - name: name
+        description: Name of the product
+        tests:
+      - name: price
+        description: Price of the product
+        tests:
+      - name: inventory
+        description: Amount of the inventory we have for this product
+        tests:

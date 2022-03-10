@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: cln_events
+    description: events information
+    columns:
+      - name: event_id
+        description: UUID of each unique event on the platform
+        tests:
+          - not_null
+          - unique
+      - name: session_id
+        description: UUID of each browsing session on the platform which can contain many events
+        tests:
+      - name: user_id
+        description: UUID of the user that this event is associated with
+        tests:
+      - name: page_url
+        description: URL that the event happened on
+        tests:
+      - name: created_at
+        description: Timestamp of the event
+        tests:
+      - name: event_type
+        description: Type of event
+        tests:
+      - name: order_id
+        description: If the event is specific to an order (mostly used for checkout)
+        tests:
+      - name: product_id
+        description: If the event is specific to a product
+        tests:

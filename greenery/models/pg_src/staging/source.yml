@@ -1,0 +1,42 @@
+version: 2
+
+sources:
+
+  - name: pg # name of the source 
+    schema: public # this is the schema our raw data lives in
+    database: dbt # this is the name of our database
+
+    quoting:
+      database: false
+      schema: false
+      identifier: false
+
+    freshness:
+      warn_after: {count: 24, period: hour}
+      error_after: {count: 48, period: hour}
+
+    tables:
+      - name: addresses 
+        loaded_at_field: created_at
+        description: >
+          Contains address information
+      - name: events 
+        loaded_at_field: created_at
+        description: >
+          Contains event information
+      - name: order_items 
+        description: >
+          Contains product info for specific orders
+      - name: orders
+        description: >
+          Contains order information
+      - name: products 
+        description: >
+          Contains product information
+      - name: promos 
+        description: >
+          Contains promo information
+      - name: users 
+        loaded_at_field: created_at
+        description: >
+          Contains user information
