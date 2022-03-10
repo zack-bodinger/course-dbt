@@ -13,7 +13,7 @@ Apache 2.0
 ---
 
 **Question 1:** How many users do we have?
-```
+```sql
 SELECT
     COUNT(DISTINCT user_id)
     FROM dbt_zack_b.cln_users
@@ -23,7 +23,7 @@ SELECT
 ---
 
 **Question 2:** How many orders do we receive per hour?
-```
+```sql
 -- Start with an hourly breakdown of # hours created
 WITH orders_per_hour AS (
 SELECT 
@@ -42,7 +42,7 @@ SELECT
 ---
 
 **Question 3:** On average, how long does an order take from being placed to being delivered?
-```
+```sql
 -- Start with a breakdown of seconds to deliver an order
 WITH time_to_place_orders AS (
 SELECT 
@@ -59,7 +59,7 @@ SELECT
 ---
 
 **Question 4:** How many users have only made one purchase? Two purchases? Three+ purchases?
-```
+```sql
 -- Start with a breakdown of orders placed per user
 WITH orders_per_user AS (
 SELECT 
@@ -89,7 +89,7 @@ SELECT
 ---
 
 **Question 5:** On average, how many unique sessions do we have per hour?
-```
+```sql
 -- Start with a breakdown of unique sessions per hour
 WITH sessions_per_hour AS (
 SELECT 
