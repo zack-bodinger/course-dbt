@@ -1,3 +1,9 @@
+
+WITH source AS (
+    SELECT *
+        FROM {{ source('pg', 'events') }}
+)
+
 SELECT 
     event_id
     , session_id
@@ -7,4 +13,4 @@ SELECT
     , event_type
     , order_id
     , product_id
-FROM {{ source('pg', 'events') }}
+FROM source

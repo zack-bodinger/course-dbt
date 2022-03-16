@@ -12,18 +12,25 @@ models:
       - name: session_id
         description: UUID of each browsing session on the platform which can contain many events
         tests:
+          - not_null
       - name: user_id
         description: UUID of the user that this event is associated with
         tests:
+          - not_null
+          - relationships:
+              to: ref('cln_users')
+              field: user_id
       - name: page_url
         description: URL that the event happened on
         tests:
+          - not_null
       - name: created_at
         description: Timestamp of the event
         tests:
       - name: event_type
         description: Type of event
         tests:
+          - not_null
       - name: order_id
         description: If the event is specific to an order (mostly used for checkout)
         tests:

@@ -12,21 +12,31 @@ models:
       - name: first_name
         description: first name of the user
         tests:
+          - not_null
       - name: last_name
         description: last name of the user
         tests:
+          - not_null
       - name: email
         description: email address of the user
         tests:
+          - contains_regex:
+              regex: '[\w\-.]+@[\w\-.]+[.]\w+'
       - name: phone_number
         description: phone number of the user
         tests:
+          - contains_regex:
+              regex: '\d{3}-\d{3}-\d{4}'
       - name: created_at
         description: timestamp the user was created
         tests:
+          - not_null
       - name: updated_at
         description: timestamp the user was last updated
         tests:
       - name: address_id
         description: default delivery address for the user
         tests:
+          - relationships:
+              to: ref('cln_addresses')
+              field: address_id

@@ -12,36 +12,60 @@ models:
       - name: user_id
         description: UserId of the user that placed this order
         tests:
+          - not_null
       - name: promo_id
         description: PromoId if any was used in the order
         tests:
+          - relationships:
+              to: ref('cln_promos')
+              field: promo_id
       - name: address_id
         description: Delivery address for this order
         tests:
+          - not_null
+          - relationships:
+              to: ref('cln_addresses')
+              field: address_id
       - name: created_at
         description: Timestamp when the order was created
         tests:
+          - not_null
       - name: order_cost
         description: Dollar about of the items in the order
         tests:
+          - not_null
       - name: shipping_cost
         description: Cost of shipping for the order
         tests:
+          - not_null
       - name: order_total
         description: Total cost of the order including shipping
         tests:
+          - not_null
       - name: tracking_id
         description: Tracking number for the order/package
         tests:
+          - not_null:
+              config:
+                where: "status IN ('shipped', 'delivered')"
       - name: shipping_service
         description: Company that was used for shipping
         tests:
+          - not_null:
+              config:
+                where: "status IN ('shipped', 'delivered')"
       - name: estimated_delivery_at
         description: Estimated date of delivery
         tests:
       - name: delivered_at
         description: Actual timestamp of delivery
         tests:
+          - not_null:
+              config:
+                where: "status IN ('delivered')"
       - name: status
         description: Status of the order
         tests:
+          - not_null
+          - accepted_values:
+              values: ['preparing', 'shipped', 'delivered']

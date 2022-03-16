@@ -12,6 +12,11 @@ models:
       - name: discount
         description: Absolute dollar amount that is given off with the code
         tests:
+          - not_null
+          - not_negative
       - name: status
         description: Is the promo code active or disabled
         tests:
+          - not_null
+          - accepted_values:
+              values: ['active', 'inactive']

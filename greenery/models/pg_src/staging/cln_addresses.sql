@@ -1,7 +1,13 @@
+
+WITH source AS (
+    SELECT *
+        FROM {{ source('pg', 'addresses') }}
+)
+
 SELECT 
     address_id
     , address
-    , zipcode
+    , LPAD(zipcode::text, 5, '0') AS zipcode
     , state
     , country
-FROM {{ source('pg', 'addresses') }}
+FROM source

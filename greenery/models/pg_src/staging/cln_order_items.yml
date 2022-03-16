@@ -8,9 +8,18 @@ models:
         description: OrderId of this order
         tests:
           - not_null
+          - relationships:
+              to: ref('cln_orders')
+              field: order_id
       - name: product_id
         description: ProductId of a single item in this order
         tests:
+          - not_null
+          - relationships:
+              to: ref('cln_products')
+              field: product_id
       - name: quantity
         description: Number of units of the product in this order
         tests:
+          - not_null
+          - not_negative

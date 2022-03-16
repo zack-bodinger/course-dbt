@@ -1,3 +1,9 @@
+
+WITH source AS (
+    SELECT *
+        FROM {{ source('pg', 'orders') }}
+)
+
 SELECT 
     order_id
     , user_id
@@ -12,4 +18,4 @@ SELECT
     , estimated_delivery_at
     , delivered_at
     , status
-FROM {{ source('pg', 'orders') }}
+FROM source

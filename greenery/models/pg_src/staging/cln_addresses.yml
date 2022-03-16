@@ -15,6 +15,8 @@ models:
       - name: zipcode
         description: The zipcode of the address
         tests:
+          - field_length:
+              length_of_field: 5
       - name: state
         description: state this delivery address is based in
         tests:
