@@ -91,15 +91,21 @@ SELECT
 | false | 274.48 | 4.00 | 18.50 | 5.68 |
 | true | 232.91 | 13.13 | 18.25 | 5.75 |
 
-What are good indicators of a user who will likely purchase again? 
+---
+
+**Question 2B:** What are good indicators of a user who will likely purchase again? 
 
 **Answer:** It seems like at a cursory examination, applying a promo code on a first purchase is a decent indicator that someone will purchase again. 
 
-What about indicators of users who are likely NOT to purchase again? 
+---
+
+**Question 2C:** What about indicators of users who are likely NOT to purchase again? 
 
 **Answer:** Again, very cursorily, it seems that users who spent > $270 on average on an initial purchase are less likely to have a secondary purchase
 
-If you had more data, what features would you want to look into to answer this question?
+---
+
+**Question 2D:** If you had more data, what features would you want to look into to answer this question?
 
 **Answer:** 
 - Where users came to our site from
@@ -109,6 +115,45 @@ If you had more data, what features would you want to look into to answer this q
 - Climate of the user address and trying to tie that with plant types purchased
 - Climate segmented by time of year (avg. temp/rainfall/humidity) vs. types of plants purchased and their corresponding growth requirements if outdoor plants
 - Mapping time of year purchased with holidays to see if most of our one-off purchasers were around holidays
+
+---
+
+**Question 3:** Explain the marts models you added. Why did you organize the models in the way you did?
+
+**Answer:** I added an intermediate `user_addresses` model since this was a common join I was doing for the later marts. Otherwise, the marts I made were the ones suggested, with some additional summary fields/aggregations added in ways that might be helpful.
+
+---
+
+**Question 4:** What assumptions did you make about each model?
+
+**Answer:** I made the following assumptions:
+- All users in events and orders were in the users model
+- All products in the events and order_items were in the products model
+- All promos in orders were in the promos model
+- All addresses in orders and users were in the addresses model
+- Zipcode should always be 5 digits long
+- All monetary amounts, quantities and discounts were never negative
+- Email should conform to a pattern that is *@*.*
+- Phone number should conform to a pattern that is ###-###-####
+- Shipping_service and tracking_id should not be null if order status is 'shipped' or 'delivered'
+- Delivered_at should not be null if order status is 'delivered'
+- Order_id should not be null in events of type 'checkout' or 'package_shipped'
+- Product_id should not be null in events of type 'add_to_cart' or 'page_view'
+- Primary keys should be unique within tables (address_id in addresses, user_id in users, event_id in events, promo_id in promos, product_id in products)
+
+---
+
+**Question 5:** Did you find any “bad” data as you added and ran tests on your models? How did you go about either cleaning the data in the dbt model or adjusting your assumptions/tests?
+
+**Answer:** 
+- Data cleaned: since zipcode was stored as a number, I left-padded it with zeros to 5 characters long after converting it to a string.
+- Incorrect assumption: estimated_delivery_at would not be null when orders.status was either 'shipped' or 'delivered'... This proved not to be the case and so I removed the test rather than try to clean the null fields
+
+---
+
+**Question 6:** Your stakeholders at Greenery want to understand the state of the data each day. Explain how you would ensure these tests are passing regularly and how you would alert stakeholders about bad data getting through.
+
+**Answer:** As the lecture notes suggested, I would configure dbt to run tests at regular cadences depending on the frequency with which the underlying models were expected to be updated. From there, I would configure it to send out slack alerts if any tests produced errors. 
 
 ---
 

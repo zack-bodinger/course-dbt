@@ -34,6 +34,12 @@ models:
       - name: order_id
         description: If the event is specific to an order (mostly used for checkout)
         tests:
+          - not_null:
+              config:
+                where: "event_type IN ('checkout', 'package_shpped')"
       - name: product_id
         description: If the event is specific to a product
         tests:
+          - not_null:
+              config:
+                where: "event_type IN ('add_to_cart', 'page_view')"
