@@ -21,15 +21,13 @@ SELECT
     , users.created_at AS user_created_at
     , users.updated_at
     , users.address_id
-    , addresses.address
-    , addresses.zipcode
-    , addresses.state
-    , addresses.country
+    , users.address
+    , users.zipcode
+    , users.state
+    , users.country
 FROM {{ ref('cln_events') }} events
-INNER JOIN {{ ref('cln_users') }} users
+INNER JOIN {{ ref('user_addresses') }} users
     ON events.user_id = users.user_id
-LEFT JOIN {{ ref('cln_addresses') }} addresses
-  ON users.address_id = addresses.address_id
 INNER JOIN {{ ref('cln_products') }} products
     ON events.product_id = products.product_id
 WHERE events.event_type = 'page_view'
