@@ -28,6 +28,7 @@ SELECT
                   END)::numeric / COUNT(DISTINCT session_id) * 100, 2) AS conversion_rate
 FROM dbt_zack_b.fact_sessions
 ```
+**Answer:** 62.46% 
 
 ---
 
