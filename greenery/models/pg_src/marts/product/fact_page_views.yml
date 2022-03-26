@@ -1,0 +1,65 @@
+version: 2
+
+models:
+  - name: fact_page_views
+    description: ""
+    columns:
+      - name: event_id
+        description: ""
+
+      - name: session_id
+        description: ""
+
+      - name: user_id
+        description: ""
+
+      - name: page_url
+        description: ""
+
+      - name: event_created_at
+        description: ""
+
+      - name: product_id
+        description: ""
+
+      - name: name
+        description: ""
+
+      - name: price
+        description: ""
+
+      - name: inventory
+        description: ""
+
+      - name: first_name
+        description: ""
+
+      - name: last_name
+        description: ""
+
+      - name: email
+        description: ""
+
+      - name: phone_number
+        description: ""
+
+      - name: user_created_at
+        description: ""
+
+      - name: updated_at
+        description: ""
+
+      - name: address_id
+        description: ""
+
+      - name: address
+        description: ""
+
+      - name: zipcode
+        description: ""
+
+      - name: state
+        description: ""
+
+      - name: country
+        description: ""

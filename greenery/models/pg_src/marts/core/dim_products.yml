@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: dim_products
+    description: ""
+    columns:
+      - name: product_id
+        description: ""
+
+      - name: name
+        description: ""
+
+      - name: price
+        description: ""
+
+      - name: inventory
+        description: ""
+
+      - name: avg_ordered_per_day
+        description: ""
+
+      - name: total_sold
+        description: ""
+
+      - name: first_event_day
+        description: ""

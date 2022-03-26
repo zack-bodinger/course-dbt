@@ -1,0 +1,19 @@
+version: 2
+
+macros:
+  - name: has_column_values
+    description: takes in a model and a column in that model and creates aggreagte columns for each distinct value in the column specified, indicating if rows have those values
+    docs:
+      show: true
+    arguments:
+      - name: table
+        description: model containing column to pivot
+      - name: column
+        description: column to pivot on
+  - name: grant_roles
+    description: takes in a role and grants select access for models after a run to that role
+    docs:
+      show: true
+    arguments:
+      - name: role
+        description: role to grant select and usage access to

@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: dim_users
+    description: ""
+    columns:
+      - name: first_name
+        description: ""
+
+      - name: last_name
+        description: ""
+
+      - name: full_name
+        description: ""
+
+      - name: email
+        description: ""
+
+      - name: phone_number
+        description: ""
+
+      - name: user_created_at
+        description: ""
+
+      - name: updated_at
+        description: ""
+
+      - name: address_id
+        description: ""
+
+      - name: address
+        description: ""
+
+      - name: zipcode
+        description: ""
+
+      - name: state
+        description: ""
+
+      - name: country
+        description: ""
