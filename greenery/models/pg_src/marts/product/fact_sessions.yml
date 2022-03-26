@@ -1,0 +1,49 @@
+version: 2
+
+models:
+  - name: fact_sessions
+    description: "table showing one row per product interacted with per session"
+    columns:
+      - name: session_id
+        description: "unique_id of the model"
+        tests:
+          - not_null
+          - unique
+          - relationships:
+              to: ref('cln_events')
+              field: session_id
+      - name: user_id
+        description: "user associated with the session"
+
+      - name: product_id
+        description: "unique id of the product interacted with during the session"
+        tests:
+          - not_null
+      - name: name
+        description: "name of the product interacted with during the session"
+        tests:
+          - not_null
+      - name: price
+        description: "price of the product interacted with"
+        tests:
+          - not_null
+      - name: inventory
+        description: "inventory of the product at the time of table generation"
+        tests:
+          - not_null
+      - name: is_add_to_cart
+        description: "boolean showing if a user added this product to their cart during a session"
+        tests:
+          - not_null
+      - name: is_checkout
+        description: "boolean showing if a user checked out with this product during a session"
+        tests:
+          - not_null
+      - name: is_page_view
+        description: "boolean showing if a user viewed a page of this product during a session"
+        tests:
+          - not_null
+      - name: is_package_shipped
+        description: "boolean showing if a user had this product shipped during a session"
+        tests:
+          - not_null
