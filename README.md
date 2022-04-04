@@ -8,6 +8,39 @@ Template repository for the projects and environment of the course: Analytics en
 
 Apache 2.0
 
+## Week 4 Project
+
+**Question 1a:** How are our users moving through the product funnel?
+
+
+```sql
+SELECT * FROM snapshots.daily_funnel_stats_snapshot
+```
+**Answer:**
+It seems as though over 80% of sessions that contain a page view end up adding a product to their cart; however, only 62% end up actually checking out. 
+
+**Question 1b:** Which steps in the funnel have largest drop off points?
+
+**Answer:**
+Based on the above, it seems that our biggest drop off is from users viewing a page to actually adding something to their cart during a session. Both drop-offs are worth trying to minimize, but this presents a big opportunity. 
+
+**Question 2:**
+If your organization is using dbt, what are 1-2 things you might do differently / recommend to your organization based on learning from this course?
+
+**Answer:**
+I think I may build out some more elaborate and thorough testing, as well as try to up my macro game now that I've practiced both a little more thoroughly :)
+
+**Question 3:**
+How would you go about setting up a production/scheduled dbt run of your project in an ideal state?
+
+**Answer:**
+- First, I would run dbt snapshot to populate my snapshots with new information
+- Then, I would run dbt run across all models on a nightly basis, presuming daily updates on orders were good enough for my team. 
+- If they needed more urgent runs, I could use tags to run certain models more frequently. 
+- Then I would run dbt test across all models to address any errors and hook this up to Slack
+
+---
+
 ## Week 3 Project
 
 **Question 1:** What is our overall conversion rate
@@ -20,6 +53,10 @@ SELECT
                   END)::numeric / COUNT(DISTINCT session_id) * 100, 2) AS conversion_rate
 FROM dbt_zack_b.fact_sessions
 ```
+**Answer:** 62.46% 
+| valid_at_timestamp_utc | prct_sessions_with_page_view | prct_sessions_with_add_to_cart | prct_sessions_with_checkout |
+| -------------- | ------------------ | ----------| ----------|
+| 2022-04-04T16:35:54.018381Z | 100.00 | 80.80 | 62.46 | 
 
 ---
 

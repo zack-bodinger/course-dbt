@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: daily_funnel_stats
+    description: daily funnel stats -- updates daily in a snapshot to track historical funnel data as well
+    columns:
+      - name: valid_at_timestamp_utc
+        description: ""
+
+      - name: prct_sessions_with_page_view
+        description: ""
+
+      - name: prct_sessions_with_add_to_cart
+        description: ""
+
+      - name: prct_sessions_with_checkout
+        description: ""

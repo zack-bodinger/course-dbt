@@ -1,0 +1,16 @@
+version: 2
+exposures:
+  
+  - name: daily_funnel_stats_dashboard
+    type: dashboard
+    maturity: high
+    url: https://bi.tool/dashboards/daily_funnel_stats
+    description: >
+      Showing daily funnel stats for all interested parties
+    
+    depends_on:
+      - ref('daily_funnel_stats_snapshot')
+      
+    owner:
+      name: Zack the Data Guy
+      email: supertopsecretmission@gmail.com

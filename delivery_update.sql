@@ -24,4 +24,4 @@ SET
   estimated_delivery_at = '2021-02-19T10:15:26Z',
   status = 'shipped'
 WHERE
-  order_id = '939767ac-357a-4bec-91f8-a7b25edd46c9';
+  order_id = '939767ac-357a-4bec-91f8-a7b25edd46c9';  
